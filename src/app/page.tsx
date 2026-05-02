@@ -188,6 +188,49 @@ export default function LandingPage() {
         </motion.div>
       </section>
 
+      {/* Pricing Section */}
+      <section id="pricing" className="container mx-auto px-6 py-40">
+        <div className="text-center mb-20">
+          <h2 className="text-4xl md:text-5xl font-serif font-bold mb-6 tracking-tight">Simple, Transparent Pricing</h2>
+          <p className="text-muted text-lg max-w-xl mx-auto">One plan. Everything included. Built to help you close more deals.</p>
+        </div>
+
+        <div className="max-w-lg mx-auto">
+          <motion.div 
+            whileHover={{ y: -10 }}
+            className="bg-surface rounded-[40px] border-2 border-primary p-10 md:p-16 shadow-2xl relative overflow-hidden"
+          >
+            <div className="absolute top-0 right-0 bg-primary text-background px-6 py-2 rounded-bl-2xl font-black text-[10px] uppercase tracking-widest">
+              Most Popular
+            </div>
+            
+            <div className="mb-10">
+              <h3 className="text-2xl font-serif font-bold text-foreground mb-2">Professional Plan</h3>
+              <div className="flex items-baseline gap-1">
+                <span className="text-5xl font-serif font-bold text-primary">$39</span>
+                <span className="text-muted font-medium">/month</span>
+              </div>
+            </div>
+
+            <ul className="space-y-6 mb-12">
+              <PricingFeature text="Unlimited AI Email Generations" />
+              <PricingFeature text="Real-time Email Tracking" />
+              <PricingFeature text="Smart Follow-up Suggestions" />
+              <PricingFeature text="Deal Probability Analytics" />
+              <PricingFeature text="Priority Concierge Support" />
+            </ul>
+
+            <Link 
+              href="/signup" 
+              className="w-full bg-primary hover:bg-primary-light text-background px-8 py-5 rounded-2xl font-black uppercase tracking-widest transition-all block text-center shadow-xl shadow-primary/20 active:scale-95"
+            >
+              Start 7-Day Free Trial
+            </Link>
+            <p className="text-center text-[10px] text-muted font-bold uppercase tracking-[0.2em] mt-6">No credit card required</p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Final CTA */}
       <section className="container mx-auto px-6 py-40">
         <motion.div 
@@ -222,14 +265,25 @@ export default function LandingPage() {
         <div className="text-2xl font-serif font-bold text-primary mb-10 tracking-tight">DealMail AI</div>
         
         <div className="flex justify-center space-x-12 mb-12 text-[10px] font-black uppercase tracking-[0.3em] text-muted/60">
-           <Link href="#" className="hover:text-primary transition-colors">Privacy</Link>
-           <Link href="#" className="hover:text-primary transition-colors">Terms</Link>
-           <Link href="#" className="hover:text-primary transition-colors">Contact</Link>
+           <Link href="/privacy" className="hover:text-primary transition-colors">Privacy</Link>
+           <Link href="/terms" className="hover:text-primary transition-colors">Terms</Link>
+           <Link href="/contact" className="hover:text-primary transition-colors">Contact</Link>
         </div>
         
         <p className="text-muted/40 text-[10px] font-bold uppercase tracking-[0.2em]">&copy; {new Date().getFullYear()} DealMail AI. All rights reserved. <br className="md:hidden"/> Designed for High Performance Agents.</p>
       </footer>
     </div>
+  );
+}
+
+function PricingFeature({ text }: { text: string }) {
+  return (
+    <li className="flex items-center space-x-4">
+      <div className="w-5 h-5 rounded-full bg-primary/10 flex items-center justify-center shrink-0 border border-primary/20">
+        <CheckCircle2 size={12} className="text-primary" />
+      </div>
+      <span className="text-muted font-medium">{text}</span>
+    </li>
   );
 }
 
