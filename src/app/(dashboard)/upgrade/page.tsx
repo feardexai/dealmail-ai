@@ -12,11 +12,12 @@ export default function UpgradePage() {
       // In a real app, we'd get these from the session/context
       const userId = '00000000-0000-0000-0000-000000000000';
       const email = 'user@example.com';
+      const name = 'Real Estate Agent';
 
       const response = await fetch('/api/checkout', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ userId, email }),
+        body: JSON.stringify({ userId, email, name }),
       });
 
       const { url, error } = await response.json();

@@ -1,7 +1,7 @@
-import OpenAI from 'openai';
+import Groq from 'groq-sdk';
 
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY,
+const groq = new Groq({
+  apiKey: process.env.GROQ_API_KEY,
 });
 
 export type EmailType = 
@@ -52,8 +52,8 @@ Situation: ${situation}
 
 Write a personalized professional email based on these details.`;
 
-  const response = await openai.chat.completions.create({
-    model: 'gpt-4o',
+  const response = await groq.chat.completions.create({
+    model: 'llama-3.3-70b-versatile',
     messages: [
       { role: 'system', content: systemPrompt },
       { role: 'user', content: userPrompt }
@@ -82,8 +82,8 @@ Follow the GOLDEN RULES: No bullet points, no 'I hope this finds you well', use 
 
 Write a short, natural follow-up email.`;
 
-  const response = await openai.chat.completions.create({
-    model: 'gpt-4o',
+  const response = await groq.chat.completions.create({
+    model: 'llama-3.3-70b-versatile',
     messages: [
       { role: 'system', content: systemPrompt },
       { role: 'user', content: userPrompt }
